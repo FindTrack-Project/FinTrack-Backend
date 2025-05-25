@@ -1,20 +1,15 @@
 // src/controllers/authController.js
-const User = require("../models/User"); // Import model User
+const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 require("dotenv").config();
 
 const authController = {
   async register(req, res) {
-    const {
-      email,
-      password,
-      namaLengkap,
-      pendapatanBulananDefault,
-      jumlahAnggotaKeluargaDefault,
-    } = req.body;
+    // Hapus pendapatanBulananDefault dan jumlahAnggotaKeluargaDefault dari destructuring
+    const { email, password, namaLengkap } = req.body;
     try {
-      const existingUser = await User.findOne({ email }); // Menggunakan Mongoose findOne
+      const existingUser = await User.findOne({ email });
       if (existingUser) {
         return res.status(409).json({ message: "Email already registered." });
       }
@@ -23,14 +18,13 @@ const authController = {
       const passwordHash = await bcrypt.hash(password, salt);
 
       const newUser = new User({
-        // Membuat instance model User
         email,
         password_hash: passwordHash,
         nama_lengkap: namaLengkap,
-        pendapatan_bulanan_default: pendapatanBulananDefault,
-        jumlah_anggota_keluarga_default: jumlahAnggotaKeluargaDefault,
+        // Tidak perlu lagi menyertakan pendapatanBulananDefault dan jumlahAnggotaKeluargaDefault di sini
+        // Mereka akan default ke null atau 0 sesuai skema
       });
-      await newUser.save(); // Menyimpan user baru ke database
+      await newUser.save();
 
       const token = jwt.sign({ userId: newUser._id }, process.env.JWT_SECRET, {
         expiresIn: "1h",

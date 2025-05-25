@@ -24,17 +24,19 @@ const UserSchema = new Schema(
       type: Date,
       default: Date.now,
     },
+    // Buat ini opsional di registrasi
     pendapatan_bulanan_default: {
       type: Number,
-      default: 0,
+      default: null, // Atau 0, tergantung preferensi Anda untuk nilai default jika belum diisi
     },
+    // Buat ini opsional di registrasi
     jumlah_anggota_keluarga_default: {
       type: Number,
-      default: 0,
+      default: null, // Atau 0
     },
   },
   {
-    timestamps: true, // Menambahkan createdAt dan updatedAt otomatis
+    timestamps: true,
   }
 );
 

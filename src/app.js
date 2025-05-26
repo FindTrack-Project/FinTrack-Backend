@@ -5,7 +5,7 @@ const app = express(); // <<< Pastikan baris ini ada dan tidak ada yang menimpan
 
 // Middleware
 app.use(express.json()); // Untuk parse body JSON dari permintaan
-app.use(cors()); // Gunakan cors middleware
+app.use(cors());
 
 // Import Routes
 const authRoutes = require("./routes/authRoutes");

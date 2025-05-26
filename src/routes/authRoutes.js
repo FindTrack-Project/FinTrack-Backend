@@ -1,9 +1,12 @@
-// src/routes/authRoutes.js
+// src/routes/authRoute.js
 const express = require("express");
 const router = express.Router();
 const authController = require("../controllers/authController");
 
+// Register
 router.post("/register", authController.register);
+
+// Login
 router.post("/login", authController.login);
 
-module.exports = router;
+module.exports = router; // Jangan lupa ekspor!

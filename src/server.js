@@ -1,6 +1,6 @@
 // src/server.js
-const app = require("../app");
-const connectDB = require("../config/mongoose"); // Import koneksi MongoDB
+const app = require("./app");
+const connectDB = require("./config/mongoose"); // Import koneksi MongoDB
 require("dotenv").config();
 
 const PORT = process.env.PORT || 3000;

@@ -1,12 +1,16 @@
-// src/routes/authRoute.js
+// Contoh: src/routes/authRoutes.js
 const express = require("express");
 const router = express.Router();
-const authController = require("../controllers/authController");
 
-// Register
-router.post("/register", authController.register);
+// Pastikan Anda mendefinisikan route di sini
+router.post("/register", (req, res) => {
+  //   console.log("Register request hit", req.body);
+  res.status(200).json({ message: "Register successful" });
+});
 
-// Login
-router.post("/login", authController.login);
+router.post("/login", (req, res) => {
+  //   console.log("Login  request hit", req.body);
+  res.status(200).json({ message: "Login successful" });
+});
 
-module.exports = router; // Jangan lupa ekspor!
+module.exports = router; // PENTING: Ekspor router ini

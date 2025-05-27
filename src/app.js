@@ -5,7 +5,7 @@ const app = express();
 
 app.use(
   cors({
-    origin: "fintrack-backend-production-3a26.up.railway.app", // Ganti dengan domain frontend Anda
+    origin: "", // Ganti dengan domain frontend Anda
     methods: ["GET", "POST", "PUT", "DELETE"], // Metode yang diizinkan
     credentials: true, // Jika Anda perlu mengizinkan cookies
   })
